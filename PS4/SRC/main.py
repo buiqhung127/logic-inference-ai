@@ -28,7 +28,7 @@ class GlobalStorage:
 # -B
 
 if __name__ == '__main__':
-    # a = {'aa', 'bbba'}
+    print({'A;-B;C'}.issubset({'A', '-A;B', 'A;-B;C', '-B', 'B;-C'}))
     cc = ConfigureConstants()
     gs = GlobalStorage()
     with open(cc.input_dir) as file:
@@ -54,7 +54,7 @@ if __name__ == '__main__':
                 if moves[j] == '':
                     file.write('{}\n')
                     continue
-                print(' OR '.join(moves[j].split(';')))
+                # print(' OR '.join(moves[j].split(';')))
                 file.write(' OR '.join(moves[j].split(';')) + '\n')
         if terminal_state:
             file.write('YES')

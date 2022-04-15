@@ -32,7 +32,6 @@ def PL_Resolution(KB, alpha, logs):
         cnt = 0
         tempo = [] 
         for index, C1 in enumerate(clauses_set):
-
             for C2 in clauses_set: 
                 if C1 == C2 or len(C2) >= 3:
                     continue
@@ -41,17 +40,15 @@ def PL_Resolution(KB, alpha, logs):
                 resolvents = PL_Resolve(C1, C2) 
 
                 temporary_set = set([resolvents])
-                if not temporary_set.issubset(new):
+                if (not temporary_set.issubset(new)) and (not temporary_set.issubset(clauses_set)):
                     cnt += 1
                     tempo.append(resolvents)
-                    print(temporary_set)
+                    print(temporary_set,', results from ', C1, ' and ', C2)
                 if len(resolvents) == 0: 
                     logs.append(cnt)
                     logs.append(tempo)   
                     return True 
                 
-
-
                 new = new.union(temporary_set)
         logs.append(cnt)
         logs.append(tempo)        
@@ -59,6 +56,6 @@ def PL_Resolution(KB, alpha, logs):
         if new.issubset(clauses_set):
             return False 
         clauses_set.update(new)
-        print('clauses: ', clauses_set)
+        # print('clauses: ', clauses_set)
     
     return False
