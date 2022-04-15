@@ -1,5 +1,7 @@
 from utils import *
 from solution import PL_Resolution
+
+
 class ConfigureConstants:
     def __init__(self):
         self.input_dir = 'input.txt'
@@ -8,6 +10,7 @@ class ConfigureConstants:
 class GlobalStorage:
     def __init__(self):
         self.clauses = []
+
 
 # -A
 # 4
@@ -39,7 +42,25 @@ if __name__ == '__main__':
                 gs.clauses.append(temporary)
             
     # print(gs.clauses)
-    print(PL_Resolution(gs.clauses, alpha))
+    logs = []
+    terminal_state = PL_Resolution(gs.clauses, alpha, logs)
+    # print(logs)
+    with open(cc.output_dir, 'w') as file:
+        for i in range(0, len(logs) - 1, 2):
+            leng = logs[i] 
+            moves = logs[i + 1]
+            file.write(str(leng) + '\n')
+            for j in range(leng):
+                if moves[j] == '':
+                    file.write('{}\n')
+                    continue
+                print(' OR '.join(moves[j].split(';')))
+                file.write(' OR '.join(moves[j].split(';')) + '\n')
+        if terminal_state:
+            file.write('YES')
+        else: 
+            file.write('NO')
+
 
 # read the input
 # change the unary (not) into a prefix
