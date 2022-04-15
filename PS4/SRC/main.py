@@ -9,6 +9,20 @@ class GlobalStorage:
     def __init__(self):
         self.clauses = []
 
+# -A
+# 4
+# -A OR B
+# B OR -C
+# A OR -B OR C
+# -B
+
+
+# A
+# 4
+# -A OR B
+# -C OR B
+# A OR C OR -B
+# -B
 
 if __name__ == '__main__':
     # a = {'aa', 'bbba'}
