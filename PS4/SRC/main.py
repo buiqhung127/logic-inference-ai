@@ -1,4 +1,3 @@
-from utils import *
 from solution import PL_Resolution
 
 
@@ -44,7 +43,7 @@ if __name__ == '__main__':
     # print(gs.clauses)
     logs = []
     terminal_state = PL_Resolution(gs.clauses, alpha, logs)
-    # print(logs)
+    print(logs)
     with open(cc.output_dir, 'w') as file:
         for i in range(0, len(logs) - 1, 2):
             leng = logs[i] 
