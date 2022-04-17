@@ -27,7 +27,7 @@ class GlobalStorage:
 # -B
 
 if __name__ == '__main__':
-    print({'A;-B;C'}.issubset({'A', '-A;B', 'A;-B;C', '-B', 'B;-C'}))
+
     cc = ConfigureConstants()
     gs = GlobalStorage()
     with open(cc.input_dir) as file:
